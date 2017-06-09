@@ -6,6 +6,8 @@
 *.pdb
 *.DS_Store
 *.db
+*.exe
 /Intermediate
 /Build
 /Saved
+/.vs
