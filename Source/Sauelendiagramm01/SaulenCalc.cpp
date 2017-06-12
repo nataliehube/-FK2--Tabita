@@ -33,53 +33,55 @@ void ASaulenCalc::Tick(float DeltaTime)
 
 void ASaulenCalc::CalculateSaulenHeight(class UStaticMeshComponent* SaulenRef, float Height, float &Height_out)
 {
-	FVector MeshScale = FVector(0.5, 0.5, Height+0.1);
-	
+	FVector MeshScale = FVector(1, 1, Height+0.1);
 	SaulenRef->SetRelativeScale3D(MeshScale);
-
 	Height_out = Height + 0.1;
 
 }
 
-void ASaulenCalc::CalculateSaulenHeight2(class UStaticMeshComponent* SaulenRef, float Height, float &Height_out, bool decrease)
+void ASaulenCalc::CalculateSaulenHeight2(class UStaticMeshComponent* SaulenRef, float Height, float &Height_out, bool decreaseactiv)
 {
-	FVector MeshScale = FVector(0.5, 0.5, Height + 0.1);
-
-	SaulenRef->SetRelativeScale3D(MeshScale);
-
-	Height_out = (Height + 0.1);
-
-}
-
-void ASaulenCalc::SetActiveSaeuelen(TArray<UStaticMeshComponent*> SaulenArray, float Height, float &Height_out)
-{
-	/*int anzahl = 0;
-
-	//for (int i = TArray.; a < 20; a = a + 1) {
-	for (int i = 0; i != SaulenArray.Num(); ++i) //(auto& Str : SaulenArray)
-	{
-		++anzahl;
+	if (!decreaseactiv) {
+		Height_out = (Height + 0.1);
+		FVector MeshScale = FVector(1, 1, Height_out);
+		SaulenRef->SetRelativeScale3D(MeshScale);
+	}
+	else {
+		Height_out = (Height - 0.1);
+		if (Height_out < 0) {
+			Height_out = 0;
+		}
+		FVector MeshScale = FVector(1, 1, Height_out);
+		SaulenRef->SetRelativeScale3D(MeshScale);		
 	}
 
-	Height_out = anzahl;*/
 }
+
 
 void ASaulenCalc::SetActiveSaeuelenHeight(class UStaticMeshComponent* SaulenRef, int Anz, float Height, float &Height_out)
 {
-	FVector MeshScale = FVector(0.5, 0.5, (Height-(0.1/Anz)));
-
+	FVector MeshScale = FVector(1, 1, (Height-(0.1/Anz)));
 	SaulenRef->SetRelativeScale3D(MeshScale);
-
 	Height_out = (Height - (0.1 / Anz));
 
 }
 
-void ASaulenCalc::SetActiveSaeuelenHeight2(class UStaticMeshComponent* SaulenRef, int Anz, float Height, float &Height_out, bool decrease)
+void ASaulenCalc::SetActiveSaeuelenHeight2(class UStaticMeshComponent* SaulenRef, int Anz, float Height, float &Height_out, bool decreaseactiv)
 {
-	FVector MeshScale = FVector(0.5, 0.5, (Height - (0.1 / Anz)));
-
-	SaulenRef->SetRelativeScale3D(MeshScale);
-
-	Height_out = (Height - (0.1 / Anz));
+	if (!decreaseactiv) {
+		Height_out = (Height - (0.1 / Anz));
+		if (Height_out < 0) {
+			Height_out = 0;
+		}
+		FVector MeshScale = FVector(1, 1, Height_out);
+		SaulenRef->SetRelativeScale3D(MeshScale);
+		
+	}
+	else {
+		Height_out = (Height + (0.1 / Anz));
+		FVector MeshScale = FVector(1, 1, Height_out);
+		SaulenRef->SetRelativeScale3D(MeshScale);
+		
+	}
 
 }

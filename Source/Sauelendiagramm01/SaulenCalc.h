@@ -24,16 +24,15 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Saulen Calculation")
 	void CalculateSaulenHeight(class UStaticMeshComponent* SaulenRef, float Heigh, float &Height_out);
-	UFUNCTION(BlueprintCallable, Category = "Set Donor")
-	void CalculateSaulenHeight2(class UStaticMeshComponent* SaulenRef, float Heigh, float &Height_out, bool decrease);
 
-	UFUNCTION(BlueprintCallable, Category = "Saulen Set")
-		void SetActiveSaeuelen(TArray<UStaticMeshComponent*> SaulenArray, float Height, float &Height_out);
+	UFUNCTION(BlueprintCallable, Category = "Set Donor")
+		void CalculateSaulenHeight2(class UStaticMeshComponent* SaulenRef, float Heigh, float &Height_out, bool decreaseactiv);
 
 	UFUNCTION(BlueprintCallable, Category = "Saulen Active Set")
 	void SetActiveSaeuelenHeight(class UStaticMeshComponent* SaulenRef, int Anz, float Height, float &Height_out);
+
 	UFUNCTION(BlueprintCallable, Category = "Set Active")
-	void SetActiveSaeuelenHeight2(class UStaticMeshComponent* SaulenRef, int Anz, float Height, float &Height_out, bool decrease);
+	void SetActiveSaeuelenHeight2(class UStaticMeshComponent* SaulenRef, int Anz, float Height, float &Height_out, bool decreaseactiv);
 
 	
 };
